@@ -1,0 +1,28 @@
+{
+  "name": "express-typescript-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "start:dev": "nodemon --watch src --exec ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "graphql": "^15.9.0",
+    "graphql-http": "^1.22.1",
+    "graphql-server-express": "^1.4.1",
+    "graphql-tools": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/graphql": "^14.2.3",
+    "@types/node": "^22.8.4",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
