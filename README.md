@@ -30,7 +30,7 @@ Para realizar el procedimiento de instalación del proyecto y que pueda consumir
 1. Obtenga el código del proyecto desde este repositorio. Para ello, puede descargar todo el repositorio como un .zip o utilizar el comando ```git clone``` con el enlace al repositorio.
 2. Si no lo tiene aún, instale Node.JS. Para ello, puede ir a la [página oficial de Node.JS](https://nodejs.org/en) y elegir la versión según el sistema operativo que tenga. Es importante elegir alguna que tenga la nomenclatura LTS ya que son las versiones que nos aseguran que van a tener soporte por un largo periodo de tiempo. En nuestro caso, para el proyecto utilizamos la versión 22.11.0.
 3. Diríjase a la carpeta donde tenga descargado este proyecto (lo que logró con el paso 1) e inicialice Node.JS con el comando ```npm init -y```.
-4. Instale las dependencias ```apollo-server-express```, ```graphql```, ```typescript```, ```graphql-scalars``` y ```nodemon``` con el comando ```npm install apollo-server-express graphql typescript nodemos@latest```.
+4. Instale las dependencias ```apollo-server-express```, ```graphql```, ```typescript```, ```graphql-scalars``` y ```nodemon``` con el comando ```npm install apollo-server-express graphql typescript nodemon@latest```.
 5. Corra el servidor con el comando ```npm run dev```. Si todo sale bien, por la consola se le indicará que el servidor está corriendo en el puerto 3030.
 6. Ya tiene el servidor en funcionamiento y puede consumir la API. Diríjase a http://localhost:3030/graphql para interactuar con la interfaz de Apollo Studio.
 
