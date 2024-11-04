@@ -2,7 +2,7 @@
 
 El proyecto consiste en una API de GraphQL desarrollada con TypeScript, Node.JS, Express y Apollo Server. Se puede interactuar con la misma mediante la interfaz Apollo Studio de Apollo Server.
 
-La API permite el CRUD (Create, Read, Update and Delete) objetos de los tipos User (Usuario) y Post (Publicación), donde las Post tienen un User asociado. Por lo tanto, a continuación se listan los métodos implementados y que pueden ser consumidos:
+La API permite el CRUD (Create, Read, Update and Delete) de objetos de los tipos User (Usuario) y Post (Publicación), donde las Post tienen un User asociado. Por lo tanto, a continuación se listan los métodos implementados y que pueden ser consumidos:
 - ### **Queries**:
   - #### *User*
     - ```getHello: String``` que devuelve un 'Hello world!'.
