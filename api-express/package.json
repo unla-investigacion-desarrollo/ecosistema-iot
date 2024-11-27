@@ -15,7 +15,7 @@
     "graphql": "^15.9.0",
     "graphql-http": "^1.22.1",
     "graphql-server-express": "^1.4.1",
-    "graphql-tools": "^9.0.2"
+    "graphql-tools": "^9.0.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
