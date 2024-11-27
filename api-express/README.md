@@ -10,6 +10,28 @@ La API permite el CRUD (Create, Read, Update and Delete) de objetos del tipo Pet
   - ```createPet(name: String!, age: Int!, pictureUri: String, ownerName: String!): Pet!``` que devuelve el Pet creado.
   - ```updatePet(id: ID!, name: String, age: Int, pictureUri: String, ownerName: String): Pet!``` que devuelve la mascota modificada según los parámetros indicados si es que existe.
   - ```deletePet(id: ID!): ID!``` que elimina la mascota si es que existe.
+
+Ejemplos de uso:
+
+1)
+ {
+  getPets {
+    id
+    name
+    age
+    pictureUri
+  }
+}
+
+2)
+ mutation{
+  createPet(name: "some name", age: 10, pictureUri: "some uri", ownerName:"some owner") {
+    id
+    name
+    age
+    pictureUri
+  }
+}
   
 ## Guía de instalación
 
