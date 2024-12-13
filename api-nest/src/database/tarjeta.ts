@@ -1,5 +1,5 @@
 import {Tarjeta} from '../graphql';
-import {usuarios} from 'src/database/Usuario';
+import {usuarios} from 'src/database/usuario';
 
 //Definimos las siguientes tarjetas como exportables:
 export const tarjetas: Tarjeta[] = 
