@@ -1,0 +1,27 @@
+type Usuario
+{
+    id: ID!
+    dni: Float!
+    nombre: String!
+    apellido: String!
+}
+
+type ResultadoMutacionUsuario
+{
+    mensaje: String!
+    usuario: Usuario
+}
+
+type Query
+{
+    traerUsuarioPorId(id: ID!): Usuario
+    traerUsuarioPorDni(dni: Float!): Usuario
+    traerUsuarios: [Usuario]
+}
+
+type Mutation
+{
+    agregarUsuario(dni: Float!, nombre: String!, apellido: String!): ResultadoMutacionUsuario!
+    eliminarUsuario(dni: Float!): String!
+    modificarUsuario(id: ID!, dni: Float, nombre: String, apellido: String): ResultadoMutacionUsuario!
+}
