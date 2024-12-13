@@ -1,5 +1,5 @@
 import {Resolver, Query, Mutation, Args} from '@nestjs/graphql';
-import {usuarios} from 'src/database/Usuario';
+import {usuarios} from 'src/database/usuario';
 import {tarjetas} from 'src/database/tarjeta';
 import {TarjetaResolver} from 'src/graphql/resolvers/tarjeta.resolver'
 import {forwardRef, Inject, Injectable} from '@nestjs/common';
