@@ -1,0 +1,24 @@
+services:
+  nodered:
+    image: nodered/node-red:latest #Obtener la última imagen de Node-RED.
+    container_name: nodered
+    ports:
+      - "1880:1880"
+    volumes:
+      - node_red_data:/data
+      - ./flows.json:/init_flows/flows.json #Para cargar los flows por defecto y persistir los cambios.
+    #Manejo de la carga de los flows y la persistencia:
+    command: >
+      sh -c "if [ ! -f /data/flows.json ]; then cp /init_flows/flows.json /data/flows.json; fi && node-red"
+
+  api:
+    build:
+      context: . #Directorio donde está el Dockerfile de la API Nest.js
+    container_name: nestjs-api
+    environment:
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+
+volumes:
+  node_red_data:
