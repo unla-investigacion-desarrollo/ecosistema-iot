@@ -1,0 +1,834 @@
+[
+    {
+        "id": "9acb58cd29faea0a",
+        "type": "tab",
+        "label": "Consultas Usuario",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e6c9b99bde1f706b",
+        "type": "tab",
+        "label": "Consultas Tarjeta",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6bd6c874d5417d78",
+        "type": "http request",
+        "z": "9acb58cd29faea0a",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:3000/graphql",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 650,
+        "y": 260,
+        "wires": [
+            [
+                "26b0486289eec71a"
+            ]
+        ]
+    },
+    {
+        "id": "37ad69762f3fbf55",
+        "type": "inject",
+        "z": "9acb58cd29faea0a",
+        "name": "traerUsuarios",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "89b3e9af0dc892eb"
+            ]
+        ]
+    },
+    {
+        "id": "26b0486289eec71a",
+        "type": "debug",
+        "z": "9acb58cd29faea0a",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3bfb38841ce9078b",
+        "type": "inject",
+        "z": "9acb58cd29faea0a",
+        "name": "traerUsuarioPorId",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "70405f933b9175b5"
+            ]
+        ]
+    },
+    {
+        "id": "61403b995ced901e",
+        "type": "inject",
+        "z": "9acb58cd29faea0a",
+        "name": "traerUsuarioPorDni",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "1771a1d895ab7397"
+            ]
+        ]
+    },
+    {
+        "id": "2bbae4d7d7fc19f5",
+        "type": "inject",
+        "z": "9acb58cd29faea0a",
+        "name": "agregarUsuario",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 120,
+        "y": 280,
+        "wires": [
+            [
+                "c9b7076b3b38c2d1"
+            ]
+        ]
+    },
+    {
+        "id": "8df1b4dc898cbdb1",
+        "type": "inject",
+        "z": "9acb58cd29faea0a",
+        "name": "eliminarUsuario",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 120,
+        "y": 340,
+        "wires": [
+            [
+                "f5aaa056ce7113e9"
+            ]
+        ]
+    },
+    {
+        "id": "0b7b980d80785e4a",
+        "type": "inject",
+        "z": "9acb58cd29faea0a",
+        "name": "modificarUsuario",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 120,
+        "y": 400,
+        "wires": [
+            [
+                "164f686af3a164ab"
+            ]
+        ]
+    },
+    {
+        "id": "89b3e9af0dc892eb",
+        "type": "function",
+        "z": "9acb58cd29faea0a",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        query \n        {\n            traerUsuarios \n            {\n                id\n                dni\n                nombre\n                apellido\n            }\n        }\n    `\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "6bd6c874d5417d78"
+            ]
+        ]
+    },
+    {
+        "id": "70405f933b9175b5",
+        "type": "function",
+        "z": "9acb58cd29faea0a",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        query TraerUsuarioPorId($id: ID!) \n        {\n            traerUsuarioPorId(id: $id) \n            {\n                id\n                dni\n                nombre\n                apellido\n            }\n        }\n    `,\n    variables:\n    {\n        id: \"3\"\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 160,
+        "wires": [
+            [
+                "6bd6c874d5417d78"
+            ]
+        ]
+    },
+    {
+        "id": "c9b7076b3b38c2d1",
+        "type": "function",
+        "z": "9acb58cd29faea0a",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        mutation AgregarUsuario($dni: Float!, $nombre: String!, $apellido: String!) \n        {\n            agregarUsuario(dni: $dni, nombre: $nombre, apellido: $apellido) \n            {\n                mensaje\n                usuario \n                {\n                    id\n                    dni\n                    nombre\n                    apellido\n                }\n            }\n        }\n    `,\n    variables:\n    {\n        dni: 77777777,\n        nombre: \"Pilar\",\n        apellido: \"Rodríguez\"\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "6bd6c874d5417d78"
+            ]
+        ]
+    },
+    {
+        "id": "f5aaa056ce7113e9",
+        "type": "function",
+        "z": "9acb58cd29faea0a",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        mutation EliminarUsuario($dni: Float!) \n        {\n            eliminarUsuario(dni: $dni)\n        }\n    `,\n    variables:\n    {\n        dni: 77777777\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 340,
+        "wires": [
+            [
+                "6bd6c874d5417d78"
+            ]
+        ]
+    },
+    {
+        "id": "164f686af3a164ab",
+        "type": "function",
+        "z": "9acb58cd29faea0a",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        mutation ModificarUsuario($id: ID!, $dni: Float, $nombre: String, $apellido: String) \n        {\n            modificarUsuario(id: $id, dni: $dni, nombre: $nombre, apellido: $apellido) \n            {\n                mensaje\n                usuario \n                {\n                    id\n                    dni\n                    nombre\n                    apellido\n                }\n            }\n        }\n    `,\n    variables:\n    {\n        id: \"2\",\n        dni: 88888888,\n        nombre: \"Pablo\",\n        apellido: \"Martínez\"\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "6bd6c874d5417d78"
+            ]
+        ]
+    },
+    {
+        "id": "1771a1d895ab7397",
+        "type": "function",
+        "z": "9acb58cd29faea0a",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        query TraerUsuarioPorDni($dni: Float!) \n        {\n            traerUsuarioPorDni(dni: $dni) \n            {\n                id\n                dni\n                nombre\n                apellido\n            }\n        }\n    `,\n    variables:\n    {\n        dni: 11111111\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "6bd6c874d5417d78"
+            ]
+        ]
+    },
+    {
+        "id": "1720207ddf9419d8",
+        "type": "http request",
+        "z": "e6c9b99bde1f706b",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:3000/graphql",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 710,
+        "y": 260,
+        "wires": [
+            [
+                "dcb336fb16ca2c4e"
+            ]
+        ]
+    },
+    {
+        "id": "dcb336fb16ca2c4e",
+        "type": "debug",
+        "z": "e6c9b99bde1f706b",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "514b397588b516f3",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "traerTarjetas",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 40,
+        "wires": [
+            [
+                "e1a7c31c44a40296"
+            ]
+        ]
+    },
+    {
+        "id": "99347e228914a555",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "traerTarjetaPorId",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "fdad9564a0e25382"
+            ]
+        ]
+    },
+    {
+        "id": "e1a7c31c44a40296",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        query \n        {\n            traerTarjetas \n            {\n                id\n                codigo\n                saldo\n                fechaAlta\n                usuario \n                {\n                    id\n                    dni\n                    nombre\n                    apellido\n                }\n            }\n        }\n    `\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 40,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    },
+    {
+        "id": "fdad9564a0e25382",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = {\n    query: `\n        query TraerTarjetaPorId($id: ID!) \n        {\n            traerTarjetaPorId(id: $id) \n            {\n                id\n                codigo\n                saldo\n                fechaAlta\n                usuario \n                {\n                    id\n                    dni\n                    nombre\n                    apellido\n                }\n            }\n        }\n    `,\n    variables: \n    {\n        id: \"2\"\n    }\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 100,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    },
+    {
+        "id": "6f1e1fe2c351d12f",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "traerPorCodigo",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "84301929b3d9b70c"
+            ]
+        ]
+    },
+    {
+        "id": "84301929b3d9b70c",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = {\n    query: `\n        query TraerPorCodigo($codigo: String!) \n        {\n            traerPorCodigo(codigo: $codigo) \n            {\n                id\n                codigo\n                saldo\n                fechaAlta\n                usuario \n                {\n                    id\n                    dni\n                    nombre\n                    apellido\n                }\n            }\n        }\n    `,\n    variables: \n    {\n        codigo: \"1111\"\n    }\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 160,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    },
+    {
+        "id": "03bbac3d0dedf1d2",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "traerTarjetaPorDniUsuario",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "888eb790302eda06"
+            ]
+        ]
+    },
+    {
+        "id": "888eb790302eda06",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        query TraerTarjetaPorDniUsuario($dni: Float!) \n        {\n            traerTarjetaPorDniUsuario(dni: $dni) \n            {\n                id\n                codigo\n                saldo\n                fechaAlta\n                usuario \n                {\n                    id\n                    dni\n                    nombre\n                    apellido\n                }\n            }\n        }\n    `,\n    variables: \n    {\n        dni: 55555555\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 220,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    },
+    {
+        "id": "2a79e79a03e42776",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "traerTarjetasConSaldoEntreRangos",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "c88a9ac9e46161c0"
+            ]
+        ]
+    },
+    {
+        "id": "c88a9ac9e46161c0",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        query TraerTarjetasConSaldoEntreRangos($minimo: Float!, $maximo: Float!) \n        {\n            traerTarjetasConSaldoEntreRangos(minimo: $minimo, maximo: $maximo) \n            {\n                id\n                codigo\n                saldo\n                fechaAlta\n                usuario \n                {\n                    id\n                    dni\n                    nombre\n                    apellido\n                }\n            }\n        }\n    `,\n    variables:\n    {\n        minimo: 2500,\n        maximo: 5500\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 280,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    },
+    {
+        "id": "fe565562caa94d24",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "traerTarjetasEntreFechas",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "f4a779c994c2635a"
+            ]
+        ]
+    },
+    {
+        "id": "f4a779c994c2635a",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        query TraerTarjetasEntreFechas($fechaDesde: Date!, $fechaHasta: Date!) {\n            traerTarjetasEntreFechas(fechaDesde: $fechaDesde, fechaHasta: $fechaHasta) \n            {\n                id\n                codigo\n                saldo\n                fechaAlta\n                usuario \n                {\n                    id\n                    dni\n                    nombre\n                    apellido\n                }\n            }\n        }\n    `,\n    variables:\n    {\n        fechaDesde: \"2019-01-01\",\n        fechaHasta: \"2020-12-31\"\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 340,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    },
+    {
+        "id": "f59f87bf2b0711ef",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "agregarTarjeta",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 400,
+        "wires": [
+            [
+                "8ab450de33940b79"
+            ]
+        ]
+    },
+    {
+        "id": "8ab450de33940b79",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        mutation Mutation($codigo: String!, $saldo: Float!, $fechaAlta: Date!, $dni: Float!) \n        {\n            agregarTarjeta(codigo: $codigo, saldo: $saldo, fechaAlta: $fechaAlta, dni: $dni) \n            {\n                mensaje\n                tarjeta \n                {\n                    id\n                    codigo\n                    saldo\n                    fechaAlta\n                    usuario \n                    {\n                        id\n                        dni\n                        nombre\n                        apellido\n                    }\n                }\n            }\n        }\n    `,\n    variables:\n    {\n        codigo: \"6666\",\n        saldo: 6500,\n        fechaAlta: \"2024-12-01\",\n        dni: 66666666\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 400,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    },
+    {
+        "id": "aea1d04aa0098f9f",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "agregarSaldoTarjeta",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 130,
+        "y": 460,
+        "wires": [
+            [
+                "72cbc997dad1e93a"
+            ]
+        ]
+    },
+    {
+        "id": "72cbc997dad1e93a",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        mutation AgregarSaldoTarjeta($id: ID!, $saldo: Float!) \n        {\n            agregarSaldoTarjeta(id: $id, saldo: $saldo) \n            {\n                mensaje\n                tarjeta \n                {\n                    id\n                    codigo\n                    saldo\n                    fechaAlta\n                    usuario \n                    {\n                        id\n                        dni\n                        nombre\n                        apellido\n                    }\n                }\n            }\n        }\n    `,\n    variables:\n    {\n        id: \"1\",\n        saldo: 2000\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    },
+    {
+        "id": "307dd9dc3cbe62f3",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "eliminarTarjeta",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 120,
+        "y": 520,
+        "wires": [
+            [
+                "52d7612775c410bd"
+            ]
+        ]
+    },
+    {
+        "id": "66ced558af619540",
+        "type": "inject",
+        "z": "e6c9b99bde1f706b",
+        "name": "modificarTarjeta",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 120,
+        "y": 580,
+        "wires": [
+            [
+                "b227e87e94aaed45"
+            ]
+        ]
+    },
+    {
+        "id": "52d7612775c410bd",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        mutation EliminarTarjeta($id: ID!) \n        {\n            eliminarTarjeta(id: $id)\n        }\n    `,\n    variables:\n    {\n        id: \"4\"\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 520,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    },
+    {
+        "id": "b227e87e94aaed45",
+        "type": "function",
+        "z": "e6c9b99bde1f706b",
+        "name": "payload",
+        "func": "msg.payload = \n{\n    query: `\n        mutation ModificarTarjeta($id: ID!, $codigo: String, $saldo: Float) \n        {\n            modificarTarjeta(id: $id, codigo: $codigo, saldo: $saldo) \n            {\n                mensaje\n                tarjeta \n                {\n                    id\n                    codigo\n                    saldo\n                    fechaAlta\n                    usuario \n                    {\n                        id\n                        dni\n                        nombre\n                        apellido\n                    }\n                }\n            }\n        }\n    `,\n    variables:\n    {\n        id: \"3\",\n        codigo: \"4321\",\n        saldo: 4321\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 580,
+        "wires": [
+            [
+                "1720207ddf9419d8"
+            ]
+        ]
+    }
+]
