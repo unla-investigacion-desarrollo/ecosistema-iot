@@ -1,3 +1,4 @@
+
 /*
  * -------------------------------------------------------
  * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
@@ -17,6 +18,7 @@ export interface Medicion {
 export interface IQuery {
     traerMedicionActual(): Nullable<Medicion> | Promise<Nullable<Medicion>>;
     traerPromedioMediciones(cantidad: number): Nullable<number> | Promise<Nullable<number>>;
+    traerMedicionPorFecha(fechaHora: Date): Nullable<Medicion> | Promise<Nullable<Medicion>>;
 }
 
 export interface IMutation {

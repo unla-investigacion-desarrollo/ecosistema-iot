@@ -12,6 +12,7 @@ type Query
 {
     traerMedicionActual: Medicion
     traerPromedioMediciones(cantidad: Int!): Float
+    traerMedicionPorFecha(fechaHora: Date!): Medicion
 }
 
 type Mutation
