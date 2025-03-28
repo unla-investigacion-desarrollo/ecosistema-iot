@@ -3,8 +3,10 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
-import { DateScalar } from './graphql/resolvers/date.resolver';
-import { MedicionResolver } from './graphql/resolvers/medicion.resolver';
+import { DateScalar } from './common/date.resolver';
+import { MedicionModule } from './medicion/medicion.module';
+import { ConfigModule } from '@nestjs/config';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -21,7 +23,10 @@ import { MedicionResolver } from './graphql/resolvers/medicion.resolver';
         path: join(process.cwd(), 'src/graphql.ts'),
       },
     }),
+    ConfigModule.forRoot({ isGlobal: true }), //Carga las variables de entorno de manera global.
+    DatabaseModule, //Usa la conexión a MongoDB con `@nestjs/config`.
+    MedicionModule,
   ],
-  providers: [DateScalar, MedicionResolver],
+  providers: [DateScalar],
 })
 export class AppModule {}
