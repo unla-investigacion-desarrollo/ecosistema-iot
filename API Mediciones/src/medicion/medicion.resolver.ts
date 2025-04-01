@@ -14,11 +14,19 @@ export class MedicionResolver {
     return this.medicionService.traerMedicionActual();
   }
 
-  //Obtener el promedio de determinada cantidad de últimas mediciones:
-  @Query('traerPromedioMediciones')
-  async traerPromedioMediciones(@Args('cantidad') cantidad: number) {
-    return this.medicionService.traerPromedioMediciones(cantidad);
+  //Obtener el promedio de temperatura de determinada cantidad de últimas mediciones:
+  @Query('traerPromedioTemperatura')
+  async traerPromedioTemperatura(@Args('cantidad') cantidad: number) {
+    return this.medicionService.traerPromedioTemperatura(cantidad);
   }
+
+  //Obtener el promedio de humedad de determinada cantidad de últimas mediciones:
+  @Query('traerPromedioHumedad')
+  async traerPromedioHumedad(@Args('cantidad') cantidad: number) {
+    return this.medicionService.traerPromedioHumedad(cantidad);
+  }
+
+
 
   //Obtener la medición con determinada fecha y hora:
   @Query('traerMedicionPorFechaHora')

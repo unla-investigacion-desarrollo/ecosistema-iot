@@ -9,7 +9,8 @@ type Medicion {
 
 type Query {
   traerMedicionActual: Medicion
-  traerPromedioMediciones(cantidad: Int!): Float
+  traerPromedioTemperatura(cantidad: Int!): Float
+  traerPromedioHumedad(cantidad: Int!): Float
   traerMedicionPorFechaHora(fechaHora: Date!): Medicion
   traerMediciones: [Medicion]
   traerMedicionesEntreFechasHoras(fechaHoraDesde: Date!, fechaHoraHasta: Date!): [Medicion]

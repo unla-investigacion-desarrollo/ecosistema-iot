@@ -23,7 +23,7 @@ export class MedicionService {
   }
 
   //Obtener el promedio de determinada cantidad de últimas mediciones:
-  async traerPromedioMediciones(cantidad: number) {
+  async traerPromedioTemperatura(cantidad: number) {
     const ultimosRegistros = await this.medicionModel
       .find() //Encuentra todos los documentos.
       .sort({ fechaHora: -1 }) //Ordena por fecha y hora en orden descendente (más reciente primero).
@@ -51,6 +51,40 @@ export class MedicionService {
     }
 
     return promedio; //Retornamos el promedio de la temperatura.
+  }
+
+
+  //Obtener el promedio de humedad de determinada cantidad de últimas mediciones:
+  async traerPromedioHumedad(cantidad: number) {
+
+    const ultimosRegistros = await this.medicionModel
+      .find() //Encuentra todos los documentos.
+      .sort({ fechaHora: -1 }) //Ordena por fecha y hora en orden descendente (más reciente primero).
+      .limit(cantidad) //Limita el resultado a la cantidad solicitada.
+      .exec(); //Ejecuta la consulta.
+
+    let promedio = 0; //Inicializamos el promedio.
+    const cantMediciones = ultimosRegistros.length; //Cantidad de registros que se obtuvieron realmente de la base de datos.
+
+    //Si se pidió al menos una medición para el promedio:
+    if (cantidad > 0) {
+      //Si tenemos menos o la misma cantidad de mediciones que las solicitadas para el promedio:
+      if (cantMediciones <= cantidad) {
+        cantidad = cantMediciones; //La cantidad solicitada pasa a ser la cantidad de mediciones.
+      }
+
+      let humedadAcumulada = 0; //Inicializamos un acumulador de humedades.
+
+      //Iteramos las mediciones guardadas en el arreglo auxiliar:
+      ultimosRegistros.forEach((medicion) => {
+        humedadAcumulada += medicion.humedad; //Acumulamos la humedad de la medición.
+      });
+
+      promedio = humedadAcumulada / cantidad; //Calculamos el promedio de humedad de las mediciones.
+    }
+
+    return promedio; //Retornamos el promedio de la humedad.
+    
   }
 
   //Obtener la medición con determinada fecha y hora:
