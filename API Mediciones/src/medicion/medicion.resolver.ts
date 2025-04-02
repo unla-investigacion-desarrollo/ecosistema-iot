@@ -40,6 +40,12 @@ export class MedicionResolver {
     return this.medicionService.traerMediciones();
   }
 
+  //Obtener las ultimas "n" mediciones
+  @Query('traerUltimasMediciones')
+  async traerUltimasMediciones(@Args('cantidad') cantidad: number) {
+    return this.medicionService.traerUltimasMediciones(cantidad);
+  }
+
   //Obtener las mediciones entre dos fecha y hora (extremos inclusive):
   @Query('traerMedicionesEntreFechasHoras')
   async traerMedicionesEntreFechasHoras(

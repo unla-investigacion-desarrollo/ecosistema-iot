@@ -13,6 +13,7 @@ type Query {
   traerPromedioHumedad(cantidad: Int!): Float
   traerMedicionPorFechaHora(fechaHora: Date!): Medicion
   traerMediciones: [Medicion]
+  traerUltimasMediciones(cantidad: Int!): [Medicion]
   traerMedicionesEntreFechasHoras(fechaHoraDesde: Date!, fechaHoraHasta: Date!): [Medicion]
   traerMedicionesEntreTemperaturas(temperaturaDesde: Float!, temperaturaHasta: Float!): [Medicion]
   traerMedicionesEntreHumedades(humedadDesde: Int!, humedadHasta: Int!): [Medicion]

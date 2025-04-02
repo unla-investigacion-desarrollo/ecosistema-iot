@@ -21,6 +21,7 @@ export interface IQuery {
     traerPromedioHumedad(cantidad: number): Nullable<number> | Promise<Nullable<number>>;
     traerMedicionPorFechaHora(fechaHora: Date): Nullable<Medicion> | Promise<Nullable<Medicion>>;
     traerMediciones(): Nullable<Nullable<Medicion>[]> | Promise<Nullable<Nullable<Medicion>[]>>;
+    traerUltimasMediciones(cantidad: number): Nullable<Nullable<Medicion>[]> | Promise<Nullable<Nullable<Medicion>[]>>;
     traerMedicionesEntreFechasHoras(fechaHoraDesde: Date, fechaHoraHasta: Date): Nullable<Nullable<Medicion>[]> | Promise<Nullable<Nullable<Medicion>[]>>;
     traerMedicionesEntreTemperaturas(temperaturaDesde: number, temperaturaHasta: number): Nullable<Nullable<Medicion>[]> | Promise<Nullable<Nullable<Medicion>[]>>;
     traerMedicionesEntreHumedades(humedadDesde: number, humedadHasta: number): Nullable<Nullable<Medicion>[]> | Promise<Nullable<Nullable<Medicion>[]>>;

@@ -22,23 +22,17 @@ export class MedicionService {
     return ultimaMedicion; //Retornamos la medición.
   }
 
+
   //Obtener el promedio de determinada cantidad de últimas mediciones:
   async traerPromedioTemperatura(cantidad: number) {
-    const ultimosRegistros = await this.medicionModel
-      .find() //Encuentra todos los documentos.
-      .sort({ fechaHora: -1 }) //Ordena por fecha y hora en orden descendente (más reciente primero).
-      .limit(cantidad) //Limita el resultado a la cantidad solicitada.
-      .exec(); //Ejecuta la consulta.
+
+    const ultimosRegistros = await this.traerUltimasMediciones(cantidad);
 
     let promedio = 0; //Inicializamos el promedio.
     const cantMediciones = ultimosRegistros.length; //Cantidad de registros que se obtuvieron realmente de la base de datos.
 
     //Si se pidió al menos una medición para el promedio:
-    if (cantidad > 0) {
-      //Si tenemos menos o la misma cantidad de mediciones que las solicitadas para el promedio:
-      if (cantMediciones <= cantidad) {
-        cantidad = cantMediciones; //La cantidad solicitada pasa a ser la cantidad de mediciones.
-      }
+    if (cantMediciones > 0) {
 
       let tempAcumulada = 0; //Inicializamos un acumulador de temperaturas.
 
@@ -47,7 +41,7 @@ export class MedicionService {
         tempAcumulada += medicion.temperatura; //Acumulamos la temperatura de la medición.
       });
 
-      promedio = tempAcumulada / cantidad; //Calculamos el promedio de temperatura de las mediciones.
+      promedio = tempAcumulada / cantMediciones; //Calculamos el promedio de temperatura de las mediciones.
     }
 
     return promedio; //Retornamos el promedio de la temperatura.
@@ -57,21 +51,13 @@ export class MedicionService {
   //Obtener el promedio de humedad de determinada cantidad de últimas mediciones:
   async traerPromedioHumedad(cantidad: number) {
 
-    const ultimosRegistros = await this.medicionModel
-      .find() //Encuentra todos los documentos.
-      .sort({ fechaHora: -1 }) //Ordena por fecha y hora en orden descendente (más reciente primero).
-      .limit(cantidad) //Limita el resultado a la cantidad solicitada.
-      .exec(); //Ejecuta la consulta.
+    const ultimosRegistros = await this.traerUltimasMediciones(cantidad);
 
     let promedio = 0; //Inicializamos el promedio.
     const cantMediciones = ultimosRegistros.length; //Cantidad de registros que se obtuvieron realmente de la base de datos.
 
     //Si se pidió al menos una medición para el promedio:
-    if (cantidad > 0) {
-      //Si tenemos menos o la misma cantidad de mediciones que las solicitadas para el promedio:
-      if (cantMediciones <= cantidad) {
-        cantidad = cantMediciones; //La cantidad solicitada pasa a ser la cantidad de mediciones.
-      }
+    if (cantMediciones > 0) {
 
       let humedadAcumulada = 0; //Inicializamos un acumulador de humedades.
 
@@ -80,12 +66,14 @@ export class MedicionService {
         humedadAcumulada += medicion.humedad; //Acumulamos la humedad de la medición.
       });
 
-      promedio = humedadAcumulada / cantidad; //Calculamos el promedio de humedad de las mediciones.
+      promedio = humedadAcumulada / cantMediciones; //Calculamos el promedio de humedad de las mediciones.
     }
 
     return promedio; //Retornamos el promedio de la humedad.
     
   }
+
+  
 
   //Obtener la medición con determinada fecha y hora:
   async traerMedicionPorFechaHora(fechaHora: Date) {
@@ -101,6 +89,21 @@ export class MedicionService {
     const mediciones = await this.medicionModel.find().exec();
 
     return mediciones; //Retornamos las mediciones.
+  }
+
+  //Obtenemos las ultimas mediciones:
+  async traerUltimasMediciones(cantidad: number) {
+    let ultimosRegistros = [];
+
+    if(cantidad > 0){
+      ultimosRegistros = await this.medicionModel
+      .find() //Encuentra todos los documentos.
+      .sort({ fechaHora: -1 }) //Ordena por fecha y hora en orden descendente (más reciente primero).
+      .limit(cantidad) //Limita el resultado a la cantidad solicitada.
+      .exec(); //Ejecuta la consulta.
+    }
+    
+    return ultimosRegistros; //Retornamos las mediciones.
   }
 
   //Obtener las mediciones entre dos fecha y hora (extremos inclusive):
