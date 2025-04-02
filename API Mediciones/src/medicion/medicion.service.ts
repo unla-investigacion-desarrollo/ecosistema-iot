@@ -22,18 +22,15 @@ export class MedicionService {
     return ultimaMedicion; //Retornamos la medición.
   }
 
-
   //Obtener el promedio de determinada cantidad de últimas mediciones:
   async traerPromedioTemperatura(cantidad: number) {
-
-    const ultimosRegistros = await this.traerUltimasMediciones(cantidad);
+    const ultimosRegistros = await this.traerUltimasMediciones(cantidad); //Obtenemos las mediciones.
 
     let promedio = 0; //Inicializamos el promedio.
     const cantMediciones = ultimosRegistros.length; //Cantidad de registros que se obtuvieron realmente de la base de datos.
 
     //Si se pidió al menos una medición para el promedio:
     if (cantMediciones > 0) {
-
       let tempAcumulada = 0; //Inicializamos un acumulador de temperaturas.
 
       //Iteramos las mediciones guardadas en el arreglo auxiliar:
@@ -47,18 +44,15 @@ export class MedicionService {
     return promedio; //Retornamos el promedio de la temperatura.
   }
 
-
   //Obtener el promedio de humedad de determinada cantidad de últimas mediciones:
   async traerPromedioHumedad(cantidad: number) {
-
-    const ultimosRegistros = await this.traerUltimasMediciones(cantidad);
+    const ultimosRegistros = await this.traerUltimasMediciones(cantidad); //Obtenemos las mediciones.
 
     let promedio = 0; //Inicializamos el promedio.
     const cantMediciones = ultimosRegistros.length; //Cantidad de registros que se obtuvieron realmente de la base de datos.
 
     //Si se pidió al menos una medición para el promedio:
     if (cantMediciones > 0) {
-
       let humedadAcumulada = 0; //Inicializamos un acumulador de humedades.
 
       //Iteramos las mediciones guardadas en el arreglo auxiliar:
@@ -70,10 +64,7 @@ export class MedicionService {
     }
 
     return promedio; //Retornamos el promedio de la humedad.
-    
   }
-
-  
 
   //Obtener la medición con determinada fecha y hora:
   async traerMedicionPorFechaHora(fechaHora: Date) {
@@ -93,16 +84,17 @@ export class MedicionService {
 
   //Obtenemos las ultimas mediciones:
   async traerUltimasMediciones(cantidad: number) {
-    let ultimosRegistros = [];
+    let ultimosRegistros = []; //Inicializamos un arreglo vacío.
 
-    if(cantidad > 0){
+    //Si se pidió al menos una medición:
+    if (cantidad > 0) {
       ultimosRegistros = await this.medicionModel
-      .find() //Encuentra todos los documentos.
-      .sort({ fechaHora: -1 }) //Ordena por fecha y hora en orden descendente (más reciente primero).
-      .limit(cantidad) //Limita el resultado a la cantidad solicitada.
-      .exec(); //Ejecuta la consulta.
+        .find() //Encuentra todos los documentos.
+        .sort({ fechaHora: -1 }) //Ordena por fecha y hora en orden descendente (más reciente primero).
+        .limit(cantidad) //Limita el resultado a la cantidad solicitada.
+        .exec(); //Ejecuta la consulta.
     }
-    
+
     return ultimosRegistros; //Retornamos las mediciones.
   }
 

@@ -26,8 +26,6 @@ export class MedicionResolver {
     return this.medicionService.traerPromedioHumedad(cantidad);
   }
 
-
-
   //Obtener la medición con determinada fecha y hora:
   @Query('traerMedicionPorFechaHora')
   async traerMedicionPorFechaHora(@Args('fechaHora') fechaHora: Date) {
@@ -40,7 +38,7 @@ export class MedicionResolver {
     return this.medicionService.traerMediciones();
   }
 
-  //Obtener las ultimas "n" mediciones
+  //Obtener las últimas "n" mediciones:
   @Query('traerUltimasMediciones')
   async traerUltimasMediciones(@Args('cantidad') cantidad: number) {
     return this.medicionService.traerUltimasMediciones(cantidad);
