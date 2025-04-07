@@ -1,0 +1,25 @@
+scalar Date
+
+type Medicion {
+  id: ID!
+  fechaHora: Date!
+  temperatura: Float!
+  humedad: Int!
+}
+
+type Query {
+  traerMedicionActual: Medicion
+  traerPromedioTemperatura(cantidad: Int!): Float
+  traerPromedioHumedad(cantidad: Int!): Float
+  traerMedicionPorFechaHora(fechaHora: Date!): Medicion
+  traerMediciones: [Medicion]
+  traerUltimasMediciones(cantidad: Int!): [Medicion]
+  traerMedicionesEntreFechasHoras(fechaHoraDesde: Date!, fechaHoraHasta: Date!): [Medicion]
+  traerMedicionesEntreTemperaturas(temperaturaDesde: Float!, temperaturaHasta: Float!): [Medicion]
+  traerMedicionesEntreHumedades(humedadDesde: Int!, humedadHasta: Int!): [Medicion]
+}
+
+type Mutation {
+  agregarMedicion(fechaHora: Date!, temperatura: Float!, humedad: Float!): Medicion!
+  eliminarMedicion(fechaHora: Date!): String!
+}
