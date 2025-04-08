@@ -1,5 +1,5 @@
 # API Mediciones
-El proyecto consiste una API de GraphQL desarrollada con TypeScript, Node.js, Nest.js y Apollo Server. La misma puede ser consumida desde la interfaz gráfica Apollo Studio de Apollo Server o directamente desde el dashboard desarrollado por nosotros ([dashboard-sensores](https://github.com/unla-investigacion-desarrollo/ecosistema-iot/tree/dashboard)).
+El proyecto consiste una API de GraphQL desarrollada con TypeScript, Node.js, Nest.js y Apollo Server. La misma puede ser consumida desde la interfaz gráfica Apollo Studio de Apollo Server o directamente desde el dashboard desarrollado por nosotros ([dashboard-sensores](https://github.com/unla-investigacion-desarrollo/ecosistema-iot/tree/proyecto-sensor-temperatura-humedad/Proyecto-Ecosistema-Sensor-de-Temperatura/dashboard-sensores)).
 
 La persistencia de datos está implementada en una base de datos no relacional de MongoDB y específicamente en su versión en la nube MongoDB Atlas. A su vez, para interactuar con la misma utilizamos como ODM a Mongoose que es una librería proporcionada por Node.js.
 
@@ -21,9 +21,9 @@ La API permite realizar Queries (consultas) y Mutations (altas, bajas) de objeto
     - `agregarMedicion(fechaHora: Date!, temperatura: Float!, humedad: Float!): Medicion!` ->  Instancia un objeto del tipo Medicion y lo agrega sin ningún tipo de validación. Si la operación fue exitosa devuelve la medición agregada, en caso contrario devuelve un "MongooseError".
     - `eliminarMedicion(fechaHora: Date!): String!` -> Elimina la medición que tenga la fechaHora indicada por parámetro. Devuelve un mensaje indicando si se concretó o no la operación.
 # Guía de instalación
-1. Obtenga el código del proyecto desde este repositorio. Para ello, puede descargar todo el repositorio como un .zip o utilizar el comando `git clone --branch api-mediciones --single-branch` con el enlace al repositorio.
+1. Obtenga el código del proyecto desde este repositorio. Para ello, puede descargar todo el repositorio como un .zip o utilizar el comando `git clone --branch proyecto-sensor-temperatura-humedad --single-branch https://github.com/unla-investigacion-desarrollo/ecosistema-iot`.
 
-3. Si no lo tiene aún, instale Node.js. Puede verificar si lo tiene instalado con el comando node -v. Para instalarlo, puede ir a la página oficial de Node.js y elegir la versión según el sistema operativo que tenga. Es importante elegir alguna que tenga la nomenclatura LTS ya que son las versiones estables que nos aseguran que van a tener soporte por un largo periodo de tiempo.
+3. Si no lo tiene aún, instale Node.js. Puede verificar si lo tiene instalado con el comando node -v. Para instalarlo, puede ir a la [página oficial de Node.js](https://nodejs.org/en) y elegir la versión según el sistema operativo que tenga. Es importante elegir alguna que tenga la nomenclatura LTS ya que son las versiones estables que nos aseguran que van a tener soporte por un largo periodo de tiempo.
 
 4. Diríjase a la carpeta donde tenga descargado este proyecto (lo que logró con el paso 1) e inicialice Node.js con el comando `npm install`.
 
@@ -59,11 +59,6 @@ La API permite realizar Queries (consultas) y Mutations (altas, bajas) de objeto
 
 6. Corra el servidor con el comando `npm run start`. Si todo sale bien, por la consola se le indicará que el servidor está corriendo.
 
-7. Ya tiene el servidor en funcionamiento y puede consumir la API. Diríjase a http://localhost:4000/graphql para interactuar con la interfaz de Apollo Studio. También puede consumir la API desde el frontend que desarrollamos en ([dashboard-sensores](https://github.com/unla-investigacion-desarrollo/ecosistema-iot/tree/dashboard)). Siga el paso a paso del README para poder levantarlo.
+7. Ya tiene el servidor en funcionamiento y puede consumir la API. Diríjase a http://localhost:4000/graphql para interactuar con la interfaz de Apollo Studio. También puede consumir la API desde el frontend que desarrollamos en ([dashboard-sensores](https://github.com/unla-investigacion-desarrollo/ecosistema-iot/tree/proyecto-sensor-temperatura-humedad/Proyecto-Ecosistema-Sensor-de-Temperatura/dashboard-sensores)). Siga el paso a paso del README para poder levantarlo.
 
 8. Para interrumpir la ejecución del servicio utilice el comando Ctrl + C.
-   
-  
-
-   
-  
