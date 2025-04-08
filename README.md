@@ -38,6 +38,7 @@ Diseñar e implementar un sistema completo de monitoreo en tiempo real de temper
    - Consulta de la última medición.
    - Promedios de las últimas *n* mediciones.
    - Consulta de las últimas *n* mediciones.
+   - Inserción de una nueva medición tomada por el sensor.
 
    Toda la información es almacenada en **MongoDB Atlas** utilizando **Mongoose**.
 
@@ -73,6 +74,7 @@ Diseñar e implementar un sistema completo de monitoreo en tiempo real de temper
 - `traerPromedioTemperatura(n)`: Promedio de temperatura de las últimas *n* mediciones.
 - `traerPromedioHumedad(n)`: Promedio de humedad de las últimas *n* mediciones.
 - `traerUltimasMediciones(n)`: Lista de las últimas *n* mediciones.
+- `agregarMedicon(fechaHora, temperatura, humedad)`: Persistencia de la medición tomada por el sensor.
 
 ---
 
