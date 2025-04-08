@@ -15,11 +15,21 @@ Para realizar el procedimiento de instalación de Node-RED, debe seguir los sigu
 
 5. Una vez que levantó el servicio, por consola le saldrá la URL con la que puede consumirlo, que generalmente es http://127.0.0.1:1880/. Ingrese a esa dirección para consumir la interfaz de Node-RED.
 
-6. Cuando se encuentre en la interfaz de Node-RED, observará que no hay ningún flujo cargado. Por lo tanto, es necesario importar desde la interfaz de Node-RED el archivo ```flows.json```. Para ello, vaya a las 3 rayas horizontales en la esquina superior derecha y seleccione la opción ```Import```. En el recuadro que se abre puede copiar el contenido del archivo o directamente cargarlo. Confirme la acción y listo. 
+6. Si bien el diagrama se carga automáticamente, es necesario configurar la IP y puerto del servidor Mosquitto en el nodo "Input MQTT" para que trabaje con el que usted tiene en funcionamiento. Por lo tanto, siga el siguiente procedimiento:
 
-7. Ya tiene todo configurado en Node-RED para trabajar. Sin embargo, es necesario levantar los demás servicios mencionados para que funcione la conexión. Por lo tanto, debe seguir el paso a paso detallado en el readme de [API Mediciones](https://github.com/unla-investigacion-desarrollo/ecosistema-iot/tree/api-mediciones) y [Código ESP32](https://github.com/unla-investigacion-desarrollo/ecosistema-iot/tree/proyecto-sensor-temperatura-humedad/Proyecto-Ecosistema-Sensor-de-Temperatura/ESP32-code).
+   1.  Doble clic en el nodo "Input MQTT".
+   2.  Pestaña "Properties", en "Server" tiene cargado el que configuramos con el nombre "Mosquitto". Haga clic sobre el lápiz para editar la conexión.
+   3.  En la pestaña "Connection", sección "Server", coloque su IP pública.
+   4.  Misma pestaña que en el paso anterior, sección "Port", coloque el puerto que expuso para la conexión al broker.
+   5.  Pestaña "Security", indique su username y password del broker.
+   6.  Haga clic sobre el botón rojo "Upload "en la esquina superior derecha de la ventana emergente.
+   7.  Haga clic sobre el botón rojo "Done "en la esquina superior derecha de la ventana emergente.
+   8.  Haga clic sobre el botón rojo "Deploy "en la esquina superior derecha de la ventana.
+   9.  Con estos cambios, el nodo "Input MQTT" estará atento a los mensajes en su Mosquitto.
 
-8. Para detener la ejecución del servicio debe ejecutar ```Ctrl + C```.
+8. Ya tiene todo configurado en Node-RED para trabajar. Sin embargo, es necesario levantar los demás servicios mencionados para que funcione la conexión. Por lo tanto, debe seguir el paso a paso detallado en el readme de [API Mediciones](https://github.com/unla-investigacion-desarrollo/ecosistema-iot/tree/api-mediciones) y [Código ESP32](https://github.com/unla-investigacion-desarrollo/ecosistema-iot/tree/proyecto-sensor-temperatura-humedad/Proyecto-Ecosistema-Sensor-de-Temperatura/ESP32-code).
+
+9. Para detener la ejecución del servicio debe ejecutar ```Ctrl + C```.
 
 ## Funcionamiento
 El diagrama consiste en los siguientes nodos secuenciales:
