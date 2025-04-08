@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.gauge-container svg text {
+  fill: grey !important;
+  stroke: black !important;
+  stroke-width: 0.5px;
+  paint-order: stroke;
+  transform: translateY(-30px);
+}
