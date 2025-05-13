@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    mosquitto:
+        image: eclipse-mosquitto
+        ports:
+            - 1883:1883
+        volumes:
+          - ./config:/mosquitto/config
+          - ./data:/mosquitto/data
+          - ./log:/mosquitto/log
+        networks:
+            - mosquitto
+networks:
+    mosquitto:
+        name: mosquitto
+        driver: bridge
