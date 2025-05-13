@@ -1,0 +1,148 @@
+[
+    {
+        "id": "4f44455f7173cf04",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cee05f7b25afb8bb",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "MQTT_Node_Red",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "5",
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e3b590e221f910ac",
+        "type": "mqtt in",
+        "z": "4f44455f7173cf04",
+        "name": "Input MQTT",
+        "topic": "clima/esp32",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "cee05f7b25afb8bb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "2c417f1a915b9f81",
+                "bc88792b31d97ed9"
+            ]
+        ]
+    },
+    {
+        "id": "2c417f1a915b9f81",
+        "type": "function",
+        "z": "4f44455f7173cf04",
+        "name": "Set Data",
+        "func": "const data = typeof msg.payload === 'string' ? JSON.parse(msg.payload) : msg.payload;\n\nmsg.payload = {\n  query: `\n    mutation Mutation($fechaHora: Date!, $temperatura: Float!, $humedad: Float!) {\n      agregarMedicion(fechaHora: $fechaHora, temperatura: $temperatura, humedad: $humedad) {\n        id\n        temperatura\n        humedad\n        fechaHora\n      }\n    }\n  `,\n  variables: {\n    fechaHora: data.fechaHora,\n    temperatura: data.temperatura,\n    humedad: data.humedad\n  }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 280,
+        "wires": [
+            [
+                "b3fe93c052cedd0d"
+            ]
+        ]
+    },
+    {
+        "id": "8c5d8603c79a8e78",
+        "type": "debug",
+        "z": "4f44455f7173cf04",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b3fe93c052cedd0d",
+        "type": "http request",
+        "z": "4f44455f7173cf04",
+        "name": "API Mediciones",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:4000/graphql",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            }
+        ],
+        "x": 660,
+        "y": 280,
+        "wires": [
+            [
+                "8c5d8603c79a8e78"
+            ]
+        ]
+    },
+    {
+        "id": "bc88792b31d97ed9",
+        "type": "debug",
+        "z": "4f44455f7173cf04",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 180,
+        "wires": []
+    }
+]
