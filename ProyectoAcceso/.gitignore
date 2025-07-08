@@ -1,0 +1,32 @@
+# === JAVA / MAVEN ===
+target/
+build/
+!.mvn/wrapper/maven-wrapper.jar
+HELP.md
+
+# === IDEs ===
+
+## IntelliJ
+.idea/
+*.iws
+*.iml
+*.ipr
+
+## Eclipse / Spring Tools
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+## NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# === Visual Studio Code ===
+.vscode/
